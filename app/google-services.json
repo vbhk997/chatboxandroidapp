@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "218210440796",
+    "project_id": "mediatube-ae18c",
+    "storage_bucket": "mediatube-ae18c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218210440796:android:e48d67da156e9c6ee4b899",
+        "android_client_info": {
+          "package_name": "com.example.inchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218210440796-tkuuihs9kinmvoeip4bptjfnoi0ko3p4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrVu9E7FO7_N0GRWcZPFAECe_JmEkjfII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218210440796-tkuuihs9kinmvoeip4bptjfnoi0ko3p4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

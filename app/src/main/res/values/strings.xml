@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Inchat</string>
+    <string name="title_activity_dashboardnewactivity">dashboardnewactivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_searchpage">Search</string>
+    <string name="title_status">Status</string>
+</resources>
