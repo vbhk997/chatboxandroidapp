@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,13 +27,16 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
 
+    DatabaseReference ref;
+    Users users;
+
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser User = auth.getCurrentUser();
-        if(User!=null)
-            startActivity(new Intent(MainActivity.this,navactivity.class));
+        if (User != null)
+            startActivity(new Intent(MainActivity.this, navactivity.class));
     }
 
     @Override
@@ -50,16 +55,19 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
+        ref = FirebaseDatabase.getInstance().getReference().child("Users");
+        users = new Users();
+
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String emailid, passwords, usernames, phonenum;
 
-                usernames = username.getText().toString();
-                emailid = email.getText().toString();
-                phonenum = phone.getText().toString();
-                passwords = password.getText().toString();
+                usernames = username.getText().toString().trim();
+                emailid = email.getText().toString().trim();
+                phonenum = phone.getText().toString().trim();
+                passwords = password.getText().toString().trim();
 
                 if(usernames.isEmpty()){
                     username.setError("Please Enter Username");
@@ -82,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if(task.isSuccessful()){
+                                users.setName(usernames);
+                                users.setEmail(emailid);
+                                users.setPhonenum(phonenum);
+                                ref.push().setValue(users);
                                 startActivity(new Intent(MainActivity.this,navactivity.class));
                                 finish();
                             }else{

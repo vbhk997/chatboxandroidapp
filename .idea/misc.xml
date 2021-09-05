@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.25" />
         <entry key="app/src/main/res/layout/searchlistitems.xml" value="0.1953125" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/logout.xml" value="0.1953125" />
       </map>
     </option>
   </component>
