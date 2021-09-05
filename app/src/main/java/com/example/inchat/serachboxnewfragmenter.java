@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.inchat.Adapter.UserAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,11 +25,55 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class serachboxnewfragmenter extends Fragment {
+
+    EditText editText;
+
+    private RecyclerView recyclerView;
+    private UserAdapter userAdapter;
+    private List<Users> mUsers;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+
+        recyclerView = view.findViewById(R.id.display);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        editText = view.findViewById(R.id.searchbar);
+
+        mUsers = new ArrayList<>();
+
+        readuser();
+        return view;
+    }
+
+    private void readuser() {
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mUsers.clear();
+                for(DataSnapshot snapshot:dataSnapshot.getChildren()) {
+                    Users user = snapshot.getValue(Users.class);
+                    if(!user.getName().equals(firebaseUser.getDisplayName()))
+                        mUsers.add(user);
+                }
+                userAdapter = new UserAdapter(getContext(), mUsers);
+                recyclerView.setAdapter(userAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
