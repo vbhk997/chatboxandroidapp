@@ -1,4 +1,4 @@
-package com.example.inchat;
+package com.example.inchat.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.inchat.R;
+import com.example.inchat.Models.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
 
+    FirebaseDatabase database;
     DatabaseReference ref;
     Users users;
 
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         newtext = findViewById(R.id.textView);
 
         auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
 
         ref = FirebaseDatabase.getInstance().getReference().child("Users");
         users = new Users();
@@ -68,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
                 emailid = email.getText().toString().trim();
                 phonenum = phone.getText().toString().trim();
                 passwords = password.getText().toString().trim();
-
                 if(usernames.isEmpty()){
                     username.setError("Please Enter Username");
                     username.requestFocus();
@@ -90,10 +93,13 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if(task.isSuccessful()){
-                                users.setName(usernames);
-                                users.setEmail(emailid);
-                                users.setPhonenum(phonenum);
-                                ref.push().setValue(users);
+                                Users user = new Users(usernames, emailid, phonenum);
+                                String id = task.getResult().getUser().getUid();
+                                Users datanewvaluser = new Users(id);
+                                Users finaluservalue = new Users(usernames, emailid, phonenum,id);
+                                database.getReference().child("Users")
+                                        .child(id)
+                                        .setValue(finaluservalue);
                                 startActivity(new Intent(MainActivity.this,navactivity.class));
                                 finish();
                             }else{
@@ -109,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
         transitioner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(new Intent(MainActivity.this,Loginactivity.class));
             }
         });

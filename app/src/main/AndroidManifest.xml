@@ -10,17 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Inchat">
         <activity
-            android:name=".navactivity"
+            android:name=".Activities.MessageActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"/>
+        <activity
+            android:name=".Activities.navactivity"
             android:exported="true" />
         <activity
-            android:name=".dashboardnewactivity"
+            android:name=".Activities.dashboardnewactivity"
             android:exported="true"
             android:label="@string/title_activity_dashboardnewactivity" />
         <activity
-            android:name=".Loginactivity"
+            android:name=".Activities.Loginactivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

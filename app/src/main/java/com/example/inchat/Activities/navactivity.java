@@ -1,4 +1,4 @@
-package com.example.inchat;
+package com.example.inchat.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Switch;
 
+import com.example.inchat.R;
+import com.example.inchat.Fragments.homenewfragmenter;
+import com.example.inchat.Fragments.serachboxnewfragmenter;
+import com.example.inchat.Fragments.statusnewfragmenter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,6 +48,7 @@ public class navactivity extends AppCompatActivity {
                 startActivity(new Intent(navactivity.this, MainActivity.class));
                 finish();
                 break;
+
         }
         return super.onOptionsItemSelected(item);
     }

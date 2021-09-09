@@ -1,7 +1,8 @@
-package com.example.inchat;
+package com.example.inchat.Activities;
 
 import android.os.Bundle;
 
+import com.example.inchat.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
