@@ -1,6 +1,7 @@
 package com.example.inchat.Adapter;
 
 import android.content.Context;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.example.inchat.databinding.SenderBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class MessageAdapter extends RecyclerView.Adapter {
 
@@ -56,9 +59,10 @@ public class MessageAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         Message message = messagemodel.get(position);
-        if(holder.getClass() == senderviewholder.class)
-        ((senderviewholder)holder).sendermsg.setText(message.getMessage());
-        else
+        if(holder.getClass() == senderviewholder.class) {
+            ((senderviewholder) holder).sendermsg.setText(message.getMessage());
+            ((senderviewholder) holder).sendertime.setText(getDate(message.getTimestamp()));
+        }else
         ((recieverviewholder)holder).recievermsg.setText(message.getMessage());
     }
 
@@ -89,4 +93,10 @@ public class MessageAdapter extends RecyclerView.Adapter {
         }
     }
 
+    private String getDate(long time) {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        cal.setTimeInMillis(time * 1000);
+        String date = DateFormat.format("hh-mm", cal).toString();
+        return date;
+    }
 }

@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/senderconstraintlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -22,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="16dp" />
+            app:layout_constraintGuide_end="2dp" />
 
         <TextView
             android:id="@+id/sendertext"
@@ -31,9 +32,9 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="3dp"
-            android:inputType="textLongMessage|textMultiLine"
+            android:inputType="textUri|textLongMessage|textAutoCorrect|textMultiLine"
             android:maxWidth="270dp"
-            android:minWidth="40dp"
+            android:minWidth="50dp"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@+id/sendertime"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:textSize="7sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline2" />
 

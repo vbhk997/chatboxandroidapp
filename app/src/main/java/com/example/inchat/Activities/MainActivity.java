@@ -20,10 +20,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText username, email, phone, password;
+    EditText username, email, phone, password, usernamenewusername;
     Button signup;
     TextView transitioner, login, newtext;
 
@@ -48,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         username = findViewById(R.id.mname);
+        usernamenewusername = findViewById(R.id.musername);
         email = findViewById(R.id.memail);
         phone = findViewById(R.id.mphone);
         password = findViewById(R.id.mpass);
-        signup = findViewById(R.id.signup);
         transitioner = findViewById(R.id.transition);
-        login = findViewById(R.id.login);
+        signup = findViewById(R.id.signup);
         newtext = findViewById(R.id.textView);
 
         auth = FirebaseAuth.getInstance();
@@ -66,27 +67,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String emailid, passwords, usernames, phonenum;
+                String emailid, passwords, usernames, phonenum, usernamesnewusernames;
 
                 usernames = username.getText().toString().trim();
                 emailid = email.getText().toString().trim();
                 phonenum = phone.getText().toString().trim();
                 passwords = password.getText().toString().trim();
+                usernamesnewusernames = usernamenewusername.getText().toString().trim();
                 if(usernames.isEmpty()){
-                    username.setError("Please Enter Username");
+                    username.setError("Please Enter Name");
                     username.requestFocus();
                 }if(emailid.isEmpty()){
                     email.setError("Please Enter Email");
                     email.requestFocus();
 
                 }if(phonenum.isEmpty()){
-                    phone.setError("Please Enter Phone number");
+                    phone.setError("Please Enter Phone Number");
                     phone.requestFocus();
 
                 }if(passwords.isEmpty()){
-                    password.setError("Please Enter password");
+                    password.setError("Please Enter Password");
                     password.requestFocus();
 
+                }if(usernamesnewusernames.isEmpty()) {
+                    usernamenewusername.setError("Please Enter Username");
+                    usernamenewusername.requestFocus();
                 }else{
                     auth.createUserWithEmailAndPassword(emailid,passwords).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -96,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                                 Users user = new Users(usernames, emailid, phonenum);
                                 String id = task.getResult().getUser().getUid();
                                 Users datanewvaluser = new Users(id);
-                                Users finaluservalue = new Users(usernames, emailid, phonenum,id);
+                                Users finaluservalue = new Users(usernames, emailid, phonenum, id, usernamesnewusernames);
                                 database.getReference().child("Users")
                                         .child(id)
                                         .setValue(finaluservalue);

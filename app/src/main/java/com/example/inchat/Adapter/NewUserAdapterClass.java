@@ -25,37 +25,36 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
+public class NewUserAdapterClass extends RecyclerView.Adapter<NewUserAdapterClass.ViewHolder> {
 
     private Context mcontext;
     private List<Users>  mUser;
     FirebaseUser firebaseUser;
     DatabaseReference ref;
 
-    public UserAdapter(Context mcontext, List<Users> mUser){
+    public NewUserAdapterClass(Context mcontext, List<Users> mUser){
         this.mUser = mUser;
         this.mcontext = mcontext;
     }
 
     @NonNull
     @Override
-    public UserAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NewUserAdapterClass.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(mcontext).inflate(R.layout.useritem, parent, false);
-        return new UserAdapter.ViewHolder(view);
+        View view = LayoutInflater.from(mcontext).inflate(R.layout.homeuseritem, parent, false);
+        return new NewUserAdapterClass.ViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull UserAdapter.ViewHolder holder, int position) {
-
-        firebaseUser  = FirebaseAuth.getInstance().getCurrentUser();
+    public void onBindViewHolder(@NonNull NewUserAdapterClass.ViewHolder holder, int position) {
+       firebaseUser  = FirebaseAuth.getInstance().getCurrentUser();
         Users user = mUser.get(position);
         holder.username.setText(user.getName());
 
-        following(user.getId(), holder.followbuttonrequest);
+       // following(user.getId(), holder.followbuttonrequest);
 
-       /* holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mcontext, MessageActivity.class);
@@ -63,12 +62,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 intent.putExtra("userid", user.getId());
                 mcontext.startActivity(intent);
             }
-        });**/
+        });
 
-        holder.followbuttonrequest.setOnClickListener(new View.OnClickListener() {
+        /*holder.followbuttonrequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if((holder.followbuttonrequest.getText().toString().equals("Follow"))&&(((user.getId()).equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))==false)){
+                if(holder.followbuttonrequest.getText().toString().equals("Follow")){
                     FirebaseDatabase.getInstance().getReference().child("Users")
                             .child(firebaseUser.getUid())
                             .child("following")
@@ -92,7 +91,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                             .removeValue();
                 }
             }
-        });
+        });**/
     }
 
     @Override
@@ -104,7 +103,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         public TextView username;
         public ImageView profilepic;
-        public TextView followbuttonrequest;
 
         FirebaseDatabase ref;
 
@@ -113,32 +111,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
             username = itemView.findViewById(R.id.usernameholdernew);
             profilepic = itemView.findViewById(R.id.profileimageholdernew);
-            followbuttonrequest = itemView.findViewById(R.id.follow);
 
             ref = FirebaseDatabase.getInstance();
 
         }}
-        private void following(String userid, TextView followbuttonrequest){
-            ref = FirebaseDatabase.getInstance().getReference().child("Users")
-                    .child(firebaseUser.getUid())
-                    .child("following");
-
-            ref.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.child(userid).exists()){
-                        followbuttonrequest.setText("Unfollow");
-                    }else{
-                        followbuttonrequest.setText("Follow");
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-        }
 
 }

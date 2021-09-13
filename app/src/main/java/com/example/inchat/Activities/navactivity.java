@@ -48,7 +48,10 @@ public class navactivity extends AppCompatActivity {
                 startActivity(new Intent(navactivity.this, MainActivity.class));
                 finish();
                 break;
-
+            case R.id.profilepageclick:
+                startActivity(new Intent(navactivity.this, Profile.class));
+                finish();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

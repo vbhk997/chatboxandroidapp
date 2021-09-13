@@ -72,6 +72,7 @@ public class MessageActivity extends AppCompatActivity {
                             messages.add(model);
                         }
                         adapter.notifyDataSetChanged();
+                        binding.recyclerview.smoothScrollToPosition(binding.recyclerview.getAdapter().getItemCount());
                     }
 
                     @Override
