@@ -61,7 +61,6 @@ public class MessageAdapter extends RecyclerView.Adapter {
         Message message = messagemodel.get(position);
         if(holder.getClass() == senderviewholder.class) {
             ((senderviewholder) holder).sendermsg.setText(message.getMessage());
-            ((senderviewholder) holder).sendertime.setText(getDate(message.getTimestamp()));
         }else
         ((recieverviewholder)holder).recievermsg.setText(message.getMessage());
     }
@@ -78,7 +77,6 @@ public class MessageAdapter extends RecyclerView.Adapter {
         public recieverviewholder(@NonNull View itemView) {
             super(itemView);
             recievermsg = itemView.findViewById(R.id.recievertext);
-            recievertime = itemView.findViewById(R.id.recievertime);
         }
     }
 
@@ -89,7 +87,6 @@ public class MessageAdapter extends RecyclerView.Adapter {
         public senderviewholder(@NonNull View itemView) {
             super(itemView);
             sendermsg = itemView.findViewById(R.id.sendertext);
-            sendertime = itemView.findViewById(R.id.sendertime);
         }
     }
 

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.inchat.Fragments.groupfragmenter;
 import com.example.inchat.R;
 import com.example.inchat.Fragments.homenewfragmenter;
 import com.example.inchat.Fragments.serachboxnewfragmenter;
@@ -28,6 +29,7 @@ public class navactivity extends AppCompatActivity {
 
         BottomNavigationView bottomnav = findViewById(R.id.navview);
         bottomnav.setOnItemSelectedListener(navlistener);
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -73,6 +75,10 @@ public class navactivity extends AppCompatActivity {
 
                         case R.id.navigation_notifications:
                             newfrag = new statusnewfragmenter();
+                            break;
+
+                        case R.id.navigation_group:
+                            newfrag = new groupfragmenter();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.boxfragment,newfrag).commit();

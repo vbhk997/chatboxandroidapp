@@ -35,31 +35,20 @@
 
             <EditText
                 android:id="@+id/etmessage"
-                android:layout_width="284dp"
                 android:layout_height="48dp"
                 android:background="@null"
-                android:ems="10"
+                android:layout_weight="0.8"
+                android:layout_width="0dp"
                 android:hint="Enter Message"
                 android:inputType="textPersonName"
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/ic_action_attachclipart" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:srcCompat="@android:drawable/ic_menu_camera" />
-
-            <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="wrap_content"
+                android:layout_width="7dp"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
+                android:layout_weight="0.2"
+
                 app:srcCompat="@drawable/ic_action_new" />
 
         </LinearLayout>

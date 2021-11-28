@@ -7,6 +7,7 @@ public class Users {
     private String phonenum;
     private String id;
     private String username;
+    private String value;
 
     public Users(String name, String email, String phonenum, String id, String username) {
         this.name = name;
@@ -22,10 +23,10 @@ public class Users {
 
     public Users(){}
 
-    public Users(String usernames, String emailid, String phonenum) {
+    public Users(String id, String name, String value) {
         this.name = name;
-        this.email = email;
-        this.phonenum = phonenum;
+        this.id = id;
+        this.value = value;
     }
 
     public String getName() {
@@ -63,8 +64,17 @@ public class Users {
     public String getUsername() {
         return username;
     }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }
 

@@ -66,7 +66,7 @@ public class serachboxnewfragmenter extends Fragment {
                 mUsers.clear();
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()) {
                     Users user = snapshot.getValue(Users.class);
-                    if(!user.getName().equals(firebaseUser.getDisplayName()))
+                    if(!(user.getUsername()).equals(firebaseUser.getDisplayName()))
                         mUsers.add(user);
                 }
                 userAdapter = new UserAdapter(getContext(), mUsers);

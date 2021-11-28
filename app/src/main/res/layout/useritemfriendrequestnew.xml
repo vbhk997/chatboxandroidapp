@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_marginRight="10dp"
+    android:padding="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pholder"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="25dp"
+        android:layout_weight="0.1">
+
+        <ImageView
+            android:id="@+id/iholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_action_account" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/namholder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Username"
+        android:textSize="15sp"
+        android:layout_weight="0.5"/>
+
+    <Button
+        android:id="@+id/Accept"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:backgroundTint="#91fa1b"
+        android:text="Accept"
+        android:textSize="8sp" />
+
+    <Button
+        android:id="@+id/Decline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_weight="0.2"
+        android:backgroundTint="#fa421b"
+        android:text="Decline"
+        android:textSize="8sp" />
+
+
+</LinearLayout>

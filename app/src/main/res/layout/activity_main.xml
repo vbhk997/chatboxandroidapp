@@ -147,4 +147,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/musername" />
 
+    <TextView
+        android:id="@+id/passworderr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password should be at least six characters long"
+        android:textColor="#ED0A0A"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/signup"
+        app:layout_constraintStart_toStartOf="@+id/mpass"
+        app:layout_constraintTop_toBottomOf="@+id/mpass"
+        android:visibility="invisible"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

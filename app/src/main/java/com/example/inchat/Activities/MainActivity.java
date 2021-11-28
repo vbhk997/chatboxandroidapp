@@ -18,15 +18,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+
+import java.util.StringTokenizer;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText username, email, phone, password, usernamenewusername;
     Button signup;
-    TextView transitioner, login, newtext;
+    TextView transitioner, message, newtext;
 
     FirebaseAuth auth;
 
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         transitioner = findViewById(R.id.transition);
         signup = findViewById(R.id.signup);
         newtext = findViewById(R.id.textView);
+        message = findViewById(R.id.passworderr);
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -74,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 phonenum = phone.getText().toString().trim();
                 passwords = password.getText().toString().trim();
                 usernamesnewusernames = usernamenewusername.getText().toString().trim();
+                StringTokenizer tokens = new StringTokenizer(passwords);
+
                 if(usernames.isEmpty()){
                     username.setError("Please Enter Name");
                     username.requestFocus();
@@ -106,6 +112,13 @@ public class MainActivity extends AppCompatActivity {
                                         .child(id)
                                         .setValue(finaluservalue);
                                 startActivity(new Intent(MainActivity.this,navactivity.class));
+
+                                FirebaseUser user1 = auth.getCurrentUser();
+
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(usernamesnewusernames).build();
+
+                                user1.updateProfile(profileUpdates);
                                 finish();
                             }else{
                                 Toast.makeText(MainActivity.this, "Signup invalid please try again", Toast.LENGTH_LONG).show();

@@ -2,7 +2,6 @@ package com.example.inchat.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +16,8 @@ import com.example.inchat.R;
 import com.example.inchat.Models.Users;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -103,14 +99,16 @@ public class NewUserAdapterClass extends RecyclerView.Adapter<NewUserAdapterClas
 
         public TextView username;
         public ImageView profilepic;
+        public ImageView groupchatmaker;
 
         FirebaseDatabase ref;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            username = itemView.findViewById(R.id.usernameholdernew);
-            profilepic = itemView.findViewById(R.id.profileimageholdernew);
+            username = itemView.findViewById(R.id.usernameholdernewfriendrequest);
+            profilepic = itemView.findViewById(R.id.profileimageholdernewfriendrequest);
+            groupchatmaker = itemView.findViewById(R.id.group);
 
             ref = FirebaseDatabase.getInstance();
 
