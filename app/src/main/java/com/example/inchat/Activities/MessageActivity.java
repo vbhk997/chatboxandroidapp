@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -59,6 +65,17 @@ public class MessageActivity extends AppCompatActivity {
         binding.recyclerview.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.recyclerview.setLayoutManager(layoutManager);
+
+        /*Context context = MessageActivity.this;
+
+        /*File inchatdir = context.getDir("Inchatdir", Context.MODE_PRIVATE);
+        //File with = new File(inchatdir, "chats");
+        //FileOutputStream out = new FileOutputStream(with);
+        //BufferedReader nw = new BufferedReader(new InputStreamReader(getAssets().open("senderroom.txt")));
+        String filename = "myfile";
+        String fileContents = "Hello world!";
+        try (FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE)) {
+            fos.write(fileContents.toByteArray());**/
 
         database.getReference().child("chats")
                 .child(senderroom)
@@ -105,6 +122,7 @@ public class MessageActivity extends AppCompatActivity {
                           });
                       }
                   });
+
             }
         });
     }
