@@ -54,6 +54,10 @@ public class navactivity extends AppCompatActivity {
                 startActivity(new Intent(navactivity.this, Profile.class));
                 finish();
                 break;
+            case R.id.newgroupclick:
+                {
+
+                }
         }
         return super.onOptionsItemSelected(item);
     }

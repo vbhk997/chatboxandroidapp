@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ece6e6"
+    android:orientation="vertical">
+
+    <include layout = "@layout/grouptoolbarchat"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/messageholderg"
+        android:layout_below="@id/grouptoolbar"
+        android:layout_marginBottom="2dp"
+        android:background="#ECE6E6"
+        android:padding="10dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/messageholderg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+        android:padding="20dp"
+        app:cardCornerRadius="30dp"
+        app:contentPaddingLeft="10dp"
+        app:contentPaddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="374dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:textAlignment="center">
+
+            <EditText
+                android:id="@+id/etmessageg"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:layout_weight="0.8"
+                android:layout_width="0dp"
+                android:hint="Enter Message"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/imageView9g"
+                android:layout_width="7dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+
+                app:srcCompat="@drawable/ic_action_new" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

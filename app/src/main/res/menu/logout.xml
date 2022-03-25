@@ -9,4 +9,8 @@
         android:id="@+id/profilepageclick"
         android:title="Profile"/>
 
+    <item
+        android:id="@+id/newgroupclick"
+        android:title="Group"/>
+
 </menu>

@@ -36,6 +36,7 @@ public class GroupAdapter extends RecyclerView.Adapter{
     private List<Users> mUser;
     DatabaseReference ref;
     String keymap, gname;
+    List<Users> newmUser;
 
     public GroupAdapter(Context mcontext, List<Users> mUser, String keymap, String gname) {
         this.mcontext = mcontext;
@@ -83,6 +84,8 @@ public class GroupAdapter extends RecyclerView.Adapter{
                             .child("Groups")
                             .child(keymap)
                             .setValue(group);
+                    FirebaseDatabase.getInstance().getReference().child("Group")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(keymap).child("users").child(user.getId()).setValue(user);
                 }else if(//((returnviewholder)holder).add.getVisibility() == View.VISIBLE
                         ((returnviewholder)holder).grouprequest.getText().toString().equals("Added"))// ){
                 {((returnviewholder)holder).grouprequest.setText("Add");

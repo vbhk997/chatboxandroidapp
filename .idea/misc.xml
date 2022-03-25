@@ -29,6 +29,7 @@
         <entry key="app/src/main/res/layout-w600dp/content_main.xml" value="0.18958333333333333" />
         <entry key="app/src/main/res/layout/activity_dashboardnewactivity.xml" value="0.1953125" />
         <entry key="app/src/main/res/layout/activity_group.xml" value="0.21120202370430044" />
+        <entry key="app/src/main/res/layout/activity_group_message.xml" value="0.1953125" />
         <entry key="app/src/main/res/layout/activity_loginactivity.xml" value="0.18125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3243230270395634" />
         <entry key="app/src/main/res/layout/activity_message.xml" value="0.2774270840563393" />
@@ -43,21 +44,26 @@
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_transform.xml" value="0.1953125" />
         <entry key="app/src/main/res/layout/friendsitemneww.xml" value="0.1953125" />
+        <entry key="app/src/main/res/layout/groupfragmenttoolitem.xml" value="0.2616766598450165" />
         <entry key="app/src/main/res/layout/groupitem.xml" value="0.24326502923239116" />
-        <entry key="app/src/main/res/layout/homeuseritem.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/grouptoolbarchat.xml" value="0.1787037037037037" />
+        <entry key="app/src/main/res/layout/homeuseritem.xml" value="0.1684741759458262" />
         <entry key="app/src/main/res/layout/item_transform.xml" value="0.1953125" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.1953125" />
         <entry key="app/src/main/res/layout/reciever.xml" value="0.689282165238733" />
         <entry key="app/src/main/res/layout/searchlistitems.xml" value="0.1953125" />
         <entry key="app/src/main/res/layout/sender.xml" value="0.7679324894514767" />
-        <entry key="app/src/main/res/layout/toolbar.xml" value="0.31085043988269795" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.16027231751007615" />
         <entry key="app/src/main/res/layout/useritem.xml" value="0.2666120512497955" />
         <entry key="app/src/main/res/layout/useritemfriendrequestnew.xml" value="0.1953125" />
         <entry key="app/src/main/res/layout/userprofilepics.xml" value="0.1953125" />
         <entry key="app/src/main/res/layout/usrprofilepics.xml" value="0.19141580171445374" />
-        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.507915553601919" />
+        <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.1" />
         <entry key="app/src/main/res/menu/logout.xml" value="0.1953125" />
+        <entry key="app/src/main/res/menu/navigation_drawer.xml" value="0.19230769230769232" />
         <entry key="app/src/main/res/menu/newbarlayoutaction.xml" value="0.1953125" />
+        <entry key="app/src/main/res/menu/overflow.xml" value="0.17777777777777778" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.10729166666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher1.xml" value="0.17777777777777778" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_roun.xml" value="0.17777777777777778" />

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.inchat.Activities.GroupMessage;
 import com.example.inchat.Activities.Groupgroup;
 import com.example.inchat.Adapter.GroupAdapter;
 import com.example.inchat.Adapter.NewUserAdapterClass;
@@ -33,6 +35,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 public class homenewfragmenter extends Fragment {
 
@@ -42,6 +46,8 @@ public class homenewfragmenter extends Fragment {
     private Toolbar t;
     private ImageView group;
     String getkey;
+    String uniqueid, peruid;
+    Group groupp;
 
     @Nullable
     @Override
@@ -49,6 +55,7 @@ public class homenewfragmenter extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        peruid = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
         t = view.findViewById(R.id.toolbar);
         group = view.findViewById(R.id.group);
         recyclerView = view.findViewById(R.id.displaynewview);
@@ -78,14 +85,14 @@ public class homenewfragmenter extends Fragment {
                                         .child(userInput.getText().toString()).push();
                                 ref.setValue(userInput.getText().toString());
                                 getkey = ref.getKey();
-                                String name = userInput.getText().toString();
+                                String n = userInput.getText().toString();
 
                                 Group group = new Group(userInput.getText().toString(), getkey);
 
                                 FirebaseDatabase.getInstance().getReference().child("Group")
-                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(getkey).child("name").setValue(name);
+                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(getkey).child("name").setValue(n);
                                 FirebaseDatabase.getInstance().getReference().child("Group")
-                                        .child(name).removeValue();
+                                        .child(n).removeValue();
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                         .child("Groups")

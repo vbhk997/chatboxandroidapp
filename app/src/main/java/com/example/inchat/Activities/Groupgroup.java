@@ -15,9 +15,11 @@ import android.widget.Toast;
 
 import com.example.inchat.Adapter.GroupAdapter;
 import com.example.inchat.Adapter.UserAdapter;
+import com.example.inchat.Fragments.groupfragmenter;
 import com.example.inchat.Models.Users;
 import com.example.inchat.R;
 import com.example.inchat.databinding.ActivityGroupBinding;
+import com.example.inchat.Fragments.homenewfragmenter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +41,7 @@ public class Groupgroup extends AppCompatActivity {
     private List<Users> mUsers, list;
     private GroupAdapter userAdapter, cancel;
     String get, gname;
+    String keymap, grp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,10 @@ public class Groupgroup extends AppCompatActivity {
         binding.displayuser.setAdapter(userAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.displayuser.setLayoutManager(layoutManager);
+
+        Intent intent = getIntent();
+        keymap = intent.getStringExtra("getkey");
+        grp = intent.getStringExtra("group");
 
         readuser();
     }
@@ -105,6 +112,32 @@ public class Groupgroup extends AppCompatActivity {
             public void onClick(View view) {
                 mUsers.clear();
                 userAdapter.notifyDataSetChanged();
+            }
+        });
+
+        make.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Groupgroup.this, navactivity.class));
+            }
+        });
+
+        notmake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(int i = 0; i < mUsers.size(); i++){
+                    Users muser = mUsers.get(i);
+                    FirebaseDatabase.getInstance().getReference("Users")
+                            .child(muser.getId())
+                            .child("Groups")
+                            .child(keymap)
+                            .child(grp).removeValue();
+                }
+                FirebaseDatabase.getInstance().getReference("Group")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .child(keymap)
+                        .child(grp).removeValue();
+                startActivity(new Intent(Groupgroup.this, navactivity.class));
             }
         });
     }

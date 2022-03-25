@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Inchat">
         <activity
+            android:name=".Activities.GroupMessage"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
             android:name=".Activities.Groupgroup"
             android:exported="true" />
         <activity

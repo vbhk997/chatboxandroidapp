@@ -2,7 +2,7 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/teal"
+    android:background="@color/blues"
     android:id="@+id/toolbar">
 
     <RelativeLayout
@@ -28,7 +28,7 @@
             android:layout_marginLeft="3dp"
             android:text="Chats"
             android:textColor="@color/white"
-            android:textSize="23sp"
+            android:textSize="16sp"
             android:textStyle="normal" />
     </RelativeLayout>
 
