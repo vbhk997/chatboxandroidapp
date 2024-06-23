@@ -3,7 +3,6 @@ package com.example.inchat.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,15 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
-import android.widget.Toast;
 
 import com.example.inchat.Adapter.GroupAdapter;
-import com.example.inchat.Adapter.UserAdapter;
-import com.example.inchat.Fragments.groupfragmenter;
 import com.example.inchat.Models.Users;
 import com.example.inchat.R;
 import com.example.inchat.databinding.ActivityGroupBinding;
-import com.example.inchat.Fragments.homenewfragmenter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Groupgroup extends AppCompatActivity {
+public class GroupClass extends AppCompatActivity {
 
     ActivityGroupBinding binding;
 
@@ -77,7 +72,7 @@ public class Groupgroup extends AppCompatActivity {
         readuser();
     }
 
-    private void readuser() {
+    private void readuser(){
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
@@ -85,7 +80,7 @@ public class Groupgroup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (adduser.getText().toString() != null) {
+                if (!(adduser.getText().toString().equals(""))){
                     databaseReference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -118,7 +113,7 @@ public class Groupgroup extends AppCompatActivity {
         make.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Groupgroup.this, navactivity.class));
+                startActivity(new Intent(GroupClass.this, navactivity.class));
             }
         });
 
@@ -137,7 +132,7 @@ public class Groupgroup extends AppCompatActivity {
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .child(keymap)
                         .child(grp).removeValue();
-                startActivity(new Intent(Groupgroup.this, navactivity.class));
+                startActivity(new Intent(GroupClass.this, navactivity.class));
             }
         });
     }

@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.inchat.Activities.GroupMessage;
-import com.example.inchat.Activities.Groupgroup;
-import com.example.inchat.Adapter.GroupAdapter;
+import com.example.inchat.Activities.GroupClass;
 import com.example.inchat.Adapter.NewUserAdapterClass;
 import com.example.inchat.Models.Group;
 import com.example.inchat.Models.Users;
@@ -36,9 +33,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
-public class homenewfragmenter extends Fragment {
+public class homenewfragment extends Fragment {
 
     private RecyclerView recyclerView;
     private NewUserAdapterClass userAdapter;
@@ -99,7 +95,7 @@ public class homenewfragmenter extends Fragment {
                                         .child(getkey)
                                         .setValue(group);
 
-                                Intent intent = new Intent(getActivity(), Groupgroup.class);
+                                Intent intent = new Intent(getActivity(), GroupClass.class);
                                 intent.putExtra("group", group.getName());
                                 intent.putExtra("keymap", getkey);
 

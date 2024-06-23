@@ -98,12 +98,14 @@ public class MessageActivity extends AppCompatActivity {
                     }
                 });
 
+
         binding.imageView9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                   String message = binding.etmessage.getText().toString();
                   Date date = new Date();
                   final Message model = new Message(message, senderuid, date.getTime());
+                if(!binding.etmessage.getText().toString().equals(" ")){
                   binding.etmessage.setText("");
                   database.getReference().child("chats")
                           .child(senderroom)
@@ -124,7 +126,7 @@ public class MessageActivity extends AppCompatActivity {
                   });
 
             }
-        });
+        }});
     }
 
     @Override

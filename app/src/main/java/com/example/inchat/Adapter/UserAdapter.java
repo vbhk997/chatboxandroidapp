@@ -57,7 +57,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         firebaseUser  = FirebaseAuth.getInstance().getCurrentUser();
         Users user = mUser.get(position);
-        holder.username.setText(user.getName());
+        holder.username.setText(user.getUsername());
 
         following(user.getId(), holder.followbuttonrequest, holder.unfollow);
 

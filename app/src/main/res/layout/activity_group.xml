@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.Groupgroup">
+    tools:context=".Activities.GroupClass">
 
     <androidx.appcompat.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -82,9 +82,9 @@
         android:id="@+id/displayuser"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/addeduser"
         android:layout_above="@+id/linearlaoyut"
-        android:padding="5dp"/>
+        android:layout_below="@+id/addeduser"
+        android:padding="5dp" />
 
     <LinearLayout
         android:id="@+id/linear"

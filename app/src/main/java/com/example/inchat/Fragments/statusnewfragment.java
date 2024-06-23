@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class statusnewfragmenter extends Fragment {
+public class statusnewfragment extends Fragment {
 
     private RecyclerView recyclerView;
     private NotificationsAdapter notifuserAdapter;

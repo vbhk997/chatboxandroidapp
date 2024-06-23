@@ -9,11 +9,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.inchat.Fragments.groupfragmenter;
+import com.example.inchat.Fragments.groupfragment;
 import com.example.inchat.R;
-import com.example.inchat.Fragments.homenewfragmenter;
-import com.example.inchat.Fragments.serachboxnewfragmenter;
-import com.example.inchat.Fragments.statusnewfragmenter;
+import com.example.inchat.Fragments.homenewfragment;
+import com.example.inchat.Fragments.serachboxnewfragment;
+import com.example.inchat.Fragments.statusnewfragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -70,19 +70,19 @@ public class navactivity extends AppCompatActivity {
                     Fragment newfrag = null;
                     switch (item.getItemId()){
                         case R.id.navigation_home:
-                            newfrag = new homenewfragmenter();
+                            newfrag = new homenewfragment();
                             break;
 
                         case R.id.navigation_dashboard:
-                            newfrag = new serachboxnewfragmenter();
+                            newfrag = new serachboxnewfragment();
                             break;
 
                         case R.id.navigation_notifications:
-                            newfrag = new statusnewfragmenter();
+                            newfrag = new statusnewfragment();
                             break;
 
                         case R.id.navigation_group:
-                            newfrag = new groupfragmenter();
+                            newfrag = new groupfragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.boxfragment,newfrag).commit();

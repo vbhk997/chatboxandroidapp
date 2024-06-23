@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -27,9 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class serachboxnewfragmenter extends Fragment {
+public class serachboxnewfragment extends Fragment {
 
     EditText editText;
+    Button newbtn;
 
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
@@ -48,6 +50,7 @@ public class serachboxnewfragmenter extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         editText = view.findViewById(R.id.searchbar);
         followbtn = view.findViewById(R.id.follow);
+        newbtn = view.findViewById(R.id.newsearch);
 
         mUsers = new ArrayList<>();
 
@@ -55,28 +58,41 @@ public class serachboxnewfragmenter extends Fragment {
         return view;
     }
 
-    private void readuser() {
+    private void readuser(){
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        newbtn.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onClick(View view) {
                 mUsers.clear();
-                for(DataSnapshot snapshot:dataSnapshot.getChildren()) {
-                    Users user = snapshot.getValue(Users.class);
-                    if(!(user.getUsername()).equals(firebaseUser.getDisplayName()))
-                        mUsers.add(user);
-                }
-                userAdapter = new UserAdapter(getContext(), mUsers);
-                recyclerView.setAdapter(userAdapter);
-            }
+                String t = editText.getText().toString();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                if (!(t.equals(""))){
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        mUsers.clear();
+                        for(DataSnapshot snapshot:dataSnapshot.getChildren()) {
+                            Users user = snapshot.getValue(Users.class);
+                            if (user.getName().contains(editText.getText().toString()) || user.getUsername().contains(editText.getText().toString())) {
+                                mUsers.add(user);
+                            }
+                        }
+                        userAdapter = new UserAdapter(getContext(), mUsers);
+                        recyclerView.setAdapter(userAdapter);
+                    }
 
-            }
-        });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
-}
+                else{
+                    mUsers.clear();
+                    userAdapter = new UserAdapter(getContext(), mUsers);
+                    recyclerView.setAdapter(userAdapter);
+                }
+}});}}

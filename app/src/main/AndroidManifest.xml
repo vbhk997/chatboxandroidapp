@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.inchat">
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher1"
@@ -10,12 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_roun"
         android:supportsRtl="true"
         android:theme="@style/Theme.Inchat">
+
         <activity
             android:name=".Activities.GroupMessage"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
-            android:name=".Activities.Groupgroup"
+            android:name=".Activities.GroupClass"
             android:exported="true" />
         <activity
             android:name=".Activities.Profile"

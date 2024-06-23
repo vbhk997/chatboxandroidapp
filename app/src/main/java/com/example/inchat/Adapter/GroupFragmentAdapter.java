@@ -9,22 +9,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inchat.Activities.GroupMessage;
-import com.example.inchat.Activities.navactivity;
-import com.example.inchat.Fragments.groupfragmenter;
-import com.example.inchat.Fragments.homenewfragmenter;
 import com.example.inchat.Models.Group;
-import com.example.inchat.Models.Users;
 import com.example.inchat.R;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
